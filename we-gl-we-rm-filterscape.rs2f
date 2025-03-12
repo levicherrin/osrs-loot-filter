@@ -6,10 +6,7 @@ name = "levi-filterscape";
 // var: item value thresholds
 #define VALUE_TIER_S 15000000 // 15m
 #define VALUE_TIER_A 5000000  // 5m
-#define VALUE_TIER_B 1000000   // 1m
-#define VALUE_TIER_C 500000    // 500k
-#define VALUE_TIER_D 100000    // 100k
-#define VALUE_TIER_E 20000     // 20k
+#define  // 20k
 
 #define BROWN "ffD2B287"
 #define LIGHT_BROWN "ffAF6025"
