@@ -1,6 +1,6 @@
 meta {
-name = "levi-filterscape";
-    description = "levi's customization of loot filter";
+name = "we-gl-we-rm-filters";
+    description = "group ironman customization of filterscape loot filter";
 }
 
 // var: item value thresholds
@@ -221,6 +221,13 @@ UNIQUE_C_TIER("Ice quartz")
 
 // Scurrius
 UNIQUE_B_TIER("Scurrius' spine")
+
+// Dagannoth Kings
+UNIQUE_S_TIER("Berserker ring")
+UNIQUE_S_TIER("Dragon axe")
+UNIQUE_A_TIER("Archers ring")
+UNIQUE_B_TIER("Seers ring")
+UNIQUE_B_TIER("Warrior ring")
 
 // Amoxliatl
 UNIQUE_A_TIER("*half of key (moon key)")
