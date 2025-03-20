@@ -354,7 +354,7 @@ HIDE_1("*ashes")
 HIDE_1("blue dragonhide")
 HIDE_1("green dragonhide")
 HIDE_1("red dragonhide")
-HIDE_1("black dragonhide")
+// HIDE_1("black dragonhide")
 
 // Herbs (grouped by GE value, remove herbs you want to pickup)
 // < 1k
