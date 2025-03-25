@@ -356,6 +356,9 @@ HIDE_1("green dragonhide")
 HIDE_1("red dragonhide")
 // HIDE_1("black dragonhide")
 
+// Hide coins < value
+HIDE_LT_QUANTITY("Coins", 500)
+
 // Herbs (grouped by GE value, remove herbs you want to pickup)
 // < 1k
 // HIDE_1("*Marrentill")
