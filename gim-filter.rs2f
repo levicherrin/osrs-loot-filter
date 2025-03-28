@@ -228,19 +228,25 @@ UNIQUE_S_TIER("Dragon axe")
 UNIQUE_A_TIER("Archers ring")
 UNIQUE_B_TIER("Seers ring")
 UNIQUE_B_TIER("Warrior ring")
+UNIQUE_C_TIER("Seercull")
 
 // Amoxliatl
 UNIQUE_A_TIER("*half of key (moon key)")
 UNIQUE_C_TIER("Pendant of ates*")
 
 // GWD BOSSES
+UNIQUE_S_TIER("Armadyl crossbow")
 UNIQUE_A_TIER("Zamorakian spear")
+UNIQUE_A_TIER("Bandos chestplate")
+UNIQUE_A_TIER("Bandos tassets")
+UNIQUE_A_TIER("*hilt")
 UNIQUE_B_TIER("Bandos boots")
 UNIQUE_B_TIER("Godsword shard*")
 UNIQUE_B_TIER("Frozen key piece*")
 
 // Zulrah
 UNIQUE_S_TIER("*mutagen")
+UNIQUE_S_TIER("*fang")
 
 // Vorkath
 UNIQUE_B_TIER("Vorkath's head")
