@@ -1,5 +1,5 @@
 meta {
-name = "we-gl-we-rm-filter";
+name = "we-gl-we-rm";
     description = "group ironman customization of filterscape loot filter";
 }
 
