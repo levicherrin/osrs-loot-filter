@@ -1,6 +1,6 @@
 meta {
-name = "levi-filterscape";
-    description = "levi's customization of loot filter";
+name = "we-gl-we-rm";
+    description = "group ironman customization of filterscape loot filter";
 }
 
 // var: item value thresholds
@@ -222,18 +222,31 @@ UNIQUE_C_TIER("Ice quartz")
 // Scurrius
 UNIQUE_B_TIER("Scurrius' spine")
 
+// Dagannoth Kings
+UNIQUE_S_TIER("Berserker ring")
+UNIQUE_S_TIER("Dragon axe")
+UNIQUE_A_TIER("Archers ring")
+UNIQUE_B_TIER("Seers ring")
+UNIQUE_B_TIER("Warrior ring")
+UNIQUE_C_TIER("Seercull")
+
 // Amoxliatl
 UNIQUE_A_TIER("*half of key (moon key)")
 UNIQUE_C_TIER("Pendant of ates*")
 
 // GWD BOSSES
+UNIQUE_S_TIER("Armadyl crossbow")
 UNIQUE_A_TIER("Zamorakian spear")
+UNIQUE_A_TIER("Bandos chestplate")
+UNIQUE_A_TIER("Bandos tassets")
+UNIQUE_A_TIER("*hilt")
 UNIQUE_B_TIER("Bandos boots")
 UNIQUE_B_TIER("Godsword shard*")
 UNIQUE_B_TIER("Frozen key piece*")
 
 // Zulrah
 UNIQUE_S_TIER("*mutagen")
+UNIQUE_S_TIER("*fang")
 
 // Vorkath
 UNIQUE_B_TIER("Vorkath's head")
@@ -347,7 +360,10 @@ HIDE_1("*ashes")
 HIDE_1("blue dragonhide")
 HIDE_1("green dragonhide")
 HIDE_1("red dragonhide")
-HIDE_1("black dragonhide")
+// HIDE_1("black dragonhide")
+
+// Hide coins < value
+HIDE_LT_QUANTITY("Coins", 500)
 
 // Herbs (grouped by GE value, remove herbs you want to pickup)
 // < 1k
