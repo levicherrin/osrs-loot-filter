@@ -3,6 +3,8 @@ name = "we-gl-we-rm";
     description = "group ironman customization of filterscape loot filter";
 }
 
+apply (name:"*") { fontType = 1; textAccent = 1; }
+
 // var: item value thresholds
 #define VALUE_TIER_S 15000000 // 15m
 #define VALUE_TIER_A 5000000  // 5m
@@ -11,74 +13,125 @@ name = "we-gl-we-rm";
 #define VALUE_TIER_D 100000    // 100k
 #define VALUE_TIER_E 20000     // 20k
 
+#define RANGED_AMMO ["*bolts", "*bolts (*", \
+				     "*dart", "*dart(*",    \
+					 "*arrow", "*arrow(*",  \
+					 "*knife", "*knife(*"   ]
+#define RARE_BONES ["Dragon bones", "Dagannoth bones",      \
+                    "Hydra bones", "Superior dragon bones", \
+					"Lava dragon bones"                     ]
+#define CURRENCIES ["Archery ticket", "Mole claw", "Mole skin", "Trading sticks",           \
+					"Shantay pass", "Ship ticket", "Numulite", "Abyssal pearls",            \
+					"Anima-infused bark", "Agility arena ticket", "Barronite shards",       \
+					"Blood money", "Brimhaven voucher", "Castle wars ticket", "Ecto-token", \
+					"Frog token", "Golden nugget", "Glistening tear", "Hallowed mark",      \
+					"Intelligence", "Mark of grace", "Mermaid's tear", "Minnow",            \
+					"Molch pearl", "Nuggets", "Paramaya ticket", "Rare creature parts",     \
+					"Reward token credits", "Stardust", "Tokkul", "Termites",               \
+					"Unidentified minerals", "Warrior guild token", "Blessed bone shards",  \
+					"Sun-kissed bones", "Ecumenical key shard"                              ]
+
 #define BROWN "ffD2B287"
 #define LIGHT_BROWN "ffAF6025"
-#define ORANGE "ffF05A23"
+#define LIGHT_BROWN40 "66AF6025"
 #define CARAMEL "ffF99619"
 #define GOLD "ffD59F00"
 #define BURGUNDY "ff350D0D"
 #define DARK_GREEN "ff09600D"
 #define KHAKI "ffBEB287"
+#define KHAKI65 "A6BEB287"
+#define GRIMY_BROWN "ffb97435"
+#define MASTER_RED "ffbd1400"
 
-#define COLOR2(_fg) textColor = _fg; borderColor = _fg;
-#define COLOR3(_fg, _bg) textColor = _fg; borderColor = _fg; backgroundColor = _bg;
-#define HIDE_1(_name) if (name:_name && quantity:<2) { hidden = true; }
+#define BLACK20 "33000000"
+#define WHITE70 "b3ffffff"
+#define WHITE15 "26ffffff"
+#define BLUE "ff66b2ff"
+#define BLUE60 "9966b2ff"
+#define BLUE15 "2666b2ff"
+#define GREEN "ff45dc32"
+#define GREEN60 "9945dc32"
+#define GREEN40 "6645dc32"
+#define GREEN15 "2645dc32"
+#define ORANGE "ffff9600"
+#define ORANGE40 "66ff9600"
+#define PURPLE "ffaf00ff"
+#define PURPLE40 "66af00ff"
+#define PURPLE15 "26af00ff"
+#define PINK "fff14bbd"
+#define PINK60 "99f14bbd"
+#define PINK40 "66f14bbd"
+#define PINK15 "26f14bbd"
+#define DARK_RED "ffc30000"
+#define DARK_RED60 "99c30000"
+#define DARK_RED40 "66c30000"
+#define DARK_RED15 "26c30000"
+#define CHARCOAL "ff424242"
+#define LIGHT_GRAY "fff3f3f3"
+#define LIGHT_GRAY20 "33f3f3f3"
+#define LIGHT_GRAY40 "66f3f3f3"
+#define LIGHT_GRAY60 "99f3f3f3"
+#define LIGHT_PURPLE "ffe5bbff"
+
+#define COLOR_FG_BG(_fg, _bg) textColor = _fg; borderColor = _fg; backgroundColor = _bg; lootBeamColor = _bg; menuTextColor = _bg;
+#define COLOR_FG_BG_TXT(_fg, _bg, _txt) textColor = _txt; borderColor = _fg; backgroundColor = _bg; lootBeamColor = _fg; menuTextColor = _fg;
+#define COLOR_NO_MENU (_color) color = _color; menuTextColor = "ffff9040";
+#define CLUE_COLOR(_fg, _bg) textColor = _fg; borderColor = _fg; backgroundColor = _bg; showDespawn = true; showLootbeam=true;
 #define DARK_BG(_name, _color) if (name:_name) { color = _color; borderColor = _color; backgroundColor = BLACK; }
-#define TEXT_HIGHLIGHT(_name, _color) if (name:_name) { color = _color; textAccent = 2; }
+#define TEXT_HIGHLIGHT(_name, _color) if (name:_name) { color = _color; }
+#define CURRENCY (_name) if (name:_name) { color = GOLD; }
+
+#define HIDE_1(_name) if (name:_name && quantity:<2) { hidden = true; }
+#define HIDE_LT_QUANTITY(_name, _qnt) if (name:_name && quantity:<_qnt) { hidden = true; }
+#define HIDE_LT_VALUE(_name, _val) if (name:_name && value:<_val) { hidden = true; }
+#define COLOR_GT_VALUE(_name, _val, _color) if (name:_name && value:>_val) { color = _color; }
+#define MUTED_LT_QUANTITY (_name, _qnt) if (name:_name && quantity:<_qnt && value:<5000) { COLOR_NO_MENU(LIGHT_GRAY40) textAccentColor = BLACK20; }
 
 #define UNIQUE_S_TIER(_name ) if (name:_name) { \
-    COLOR3(RED, WHITE) \
-    textAccent = 3; \
-    fontType = 2; \
-    showLootBeam = true; \
+    COLOR_FG_BG(BLACK, DARK_RED60)              \
+    showLootBeam = true;                        \
+	textAccent = 3;                             \
+	lootBeamColor = BLACK;                      \
 }
 #define UNIQUE_A_TIER(_name ) if (name:_name) { \
-    COLOR3(WHITE, LIGHT_BROWN) \
-    textAccent = 3; \
-    showLootBeam = true; \
+    COLOR_FG_BG(BLACK, PINK60)                  \
+    showLootBeam = true;                        \
+	textAccent = 3;                             \
+	lootBeamColor = CHARCOAL;                   \
 }
 #define UNIQUE_B_TIER(_name) if (name:_name) { \
-    COLOR3(BLACK, LIGHT_BROWN) \
-    textAccent = 3; \
+    COLOR_FG_BG(BLACK, GREEN60)                \
+	textAccent = 3;                            \
 }
 #define UNIQUE_C_TIER(_name) if (name:_name) { \
-    COLOR3(LIGHT_BROWN, BURGUNDY) \
-       textAccent = 3; \
+    COLOR_FG_BG(BLACK, BLUE60)                 \
+	textAccent = 3;                            \
 }
 
 #define RARE_CUSTOM(_name, _color, _backgroundColor) if (name:_name) { \
-    COLOR3(_color, _backgroundColor) \
-    showLootBeam = true; \
+    COLOR_FG_BG(_color, _backgroundColor)                              \
+    showLootBeam = true;                                               \
 }
 
-#define S_TIER { \
-    COLOR3(RED, WHITE) \
-    textAccent = 1; \
-    showLootBeam = true; \
-    fontType = 2; \
+#define S_TIER {                                      \
+    COLOR_FG_BG_TXT(DARK_RED, DARK_RED40, LIGHT_GRAY) \
+    showLootBeam = true;                              \
 }
-#define A_TIER { \
-    COLOR3(WHITE, ORANGE) \
-    textAccent = 1; \
-    showLootBeam = true; \
-    lootBeamColor = ORANGE; \
+#define A_TIER {                              \
+    COLOR_FG_BG_TXT(PINK, PINK40, LIGHT_GRAY) \
+    showLootBeam = true;                      \
 }
-#define B_TIER { \
-    COLOR3(BLACK, ORANGE) \
-    textAccent = 3; \
-    showLootBeam = true; \
-    lootBeamColor = ORANGE; \
-    menuTextColor = ORANGE; \
+#define B_TIER {                                  \
+	COLOR_FG_BG_TXT(ORANGE, ORANGE40, LIGHT_GRAY) \
+    showLootBeam = true;                          \
 }
-#define C_TIER { \
-    COLOR2(CARAMEL) \
-    textAccent = 2; \
-    showLootBeam = false; \
+#define C_TIER {                                \
+    COLOR_FG_BG_TXT(GREEN, GREEN40, LIGHT_GRAY) \
+    showLootBeam = true;                        \
 }
-#define D_TIER { \
-    color = GOLD; \
-    textAccent = 2; \
-    showLootBeam = false; \
+#define D_TIER {                              \
+    COLOR_FG_BG_TXT(BLUE, BLUE15, LIGHT_GRAY) \
+    showLootBeam = false;                     \
 }
 #define E_TIER { \
     color = KHAKI; \
@@ -86,21 +139,20 @@ name = "we-gl-we-rm";
     showLootBeam = false; \
 }
 
-#define DEFAULT_STYLE { color = WHITE; textAccent = 1; }
+#define DEFAULT_STYLE { color = WHITE; }
 
 #define VALUE_S_TIER (_name) if (name:_name) S_TIER
 #define VALUE_A_TIER (_name) if (name:_name) A_TIER
 #define VALUE_B_TIER (_name) if (name:_name) B_TIER
 #define VALUE_C_TIER (_name) if (name:_name) C_TIER
 #define VALUE_D_TIER (_name) if (name:_name) D_TIER
-#define VALUE_E_TIER (_name) if (name:_name) E_TIER
 
-#define MASTER_CLUES(_name) if (name:_name)   { COLOR3("ff9B3026", KHAKI) }
-#define ELITE_CLUES(_name) if (name:_name)    { COLOR3("ffBDA518", KHAKI) }
-#define HARD_CLUES(_name) if (name:_name)     { COLOR3("ff833798", KHAKI) }
-#define MEDIUM_CLUES(_name) if (name:_name)   { COLOR3("ff569699", KHAKI) }
-#define EASY_CLUES(_name) if (name:_name)     { COLOR3(DARK_GREEN, KHAKI) }
-#define BEGINNER_CLUES(_name) if (name:_name) { COLOR3(     WHITE, KHAKI) }
+#define MASTER_CLUES(_name) if (name:_name)   { CLUE_COLOR(MASTER_RED, KHAKI65) }
+#define ELITE_CLUES(_name) if (name:_name)    { CLUE_COLOR("cdb100", KHAKI65) }
+#define HARD_CLUES(_name) if (name:_name)     { CLUE_COLOR("ff833798", KHAKI65) }
+#define MEDIUM_CLUES(_name) if (name:_name)   { CLUE_COLOR("ff569699", KHAKI65) }
+#define EASY_CLUES(_name) if (name:_name)     { CLUE_COLOR(DARK_GREEN, KHAKI65) }
+#define BEGINNER_CLUES(_name) if (name:_name) { CLUE_COLOR(     WHITE, KHAKI65) }
 
 // Clues
 MASTER_CLUES("clue scroll (master)")
@@ -163,6 +215,7 @@ TEXT_HIGHLIGHT("Dragon defender", RED)
 // Slayer Uniques
 UNIQUE_S_TIER("Kraken tentacle")
 UNIQUE_S_TIER("Trident of the seas*")
+UNIQUE_A_TIER("Zombie axe")
 UNIQUE_A_TIER("Warped sceptre*")
 UNIQUE_A_TIER("Brimstone key")
 UNIQUE_A_TIER("Jar of*")
@@ -271,10 +324,12 @@ TEXT_HIGHLIGHT("Overload*", "ff1e88e5")
 TEXT_HIGHLIGHT("Prayer enhance*", MAGENTA)
 TEXT_HIGHLIGHT("Revitalisation*", "ffe91e63")
 TEXT_HIGHLIGHT("Xeric's aid*", YELLOW)
-
 TEXT_HIGHLIGHT("Golpar", "ff18BF8C")
 TEXT_HIGHLIGHT("Buchu leaf", "ffAC2315")
 TEXT_HIGHLIGHT("Noxifer", "ff7C1ADF")
+TEXT_HIGHLIGHT("Endarkened juice", LIGHT_PURPLE)
+TEXT_HIGHLIGHT("Cicely", LIGHT_PURPLE)
+TEXT_HIGHLIGHT("Stinkhorn mushroom", LIGHT_PURPLE)
 
 // ToA
 TEXT_HIGHLIGHT("Ambrosia*", "ffE3ECE3")
@@ -287,12 +342,14 @@ TEXT_HIGHLIGHT("Super restore*", "ffe91e63")
 TEXT_HIGHLIGHT("Saradomin brew*", YELLOW)
 TEXT_HIGHLIGHT("Prayer potion*", "ff59D6AE")
 TEXT_HIGHLIGHT("Sanfew serum*", "ffe59e9e")
-TEXT_HIGHLIGHT("Super combat potion*", "ff2a9e16")
-TEXT_HIGHLIGHT("Divine Super combat potion*", "ff2a9e16")
-TEXT_HIGHLIGHT("Ranging potion*", "ff5FB7DA")
-TEXT_HIGHLIGHT("Divine Ranging potion*", "ff5FB7DA")
-TEXT_HIGHLIGHT("Bastion potion*", "ffdb721c")
-TEXT_HIGHLIGHT("Divine Bastion potion*", "ffdb721c")
+TEXT_HIGHLIGHT("*Super combat potion*", "ff2a9e16")
+TEXT_HIGHLIGHT("*Ranging potion*", "ff5fb7da")
+TEXT_HIGHLIGHT("*Bastion potion*", "ffdb721c")
+TEXT_HIGHLIGHT("Stamina potion*", "ffa56530")
+TEXT_HIGHLIGHT("Extended super antifire*", "ffd256df")
+TEXT_HIGHLIGHT("Extended anti-venom*", "ff6ba56f")
+TEXT_HIGHLIGHT("Antidote*", "ff526119")
+TEXT_HIGHLIGHT("Menaphite remedy*", "ff2063b5")
 
 // Value Style defaults
 if (value:>VALUE_TIER_S) S_TIER
@@ -300,7 +357,6 @@ if (value:>VALUE_TIER_A) A_TIER
 if (value:>VALUE_TIER_B) B_TIER
 if (value:>VALUE_TIER_C) C_TIER
 if (value:>VALUE_TIER_D) D_TIER
-if (value:>VALUE_TIER_E) E_TIER
 
 // Misc Valuable/Stackable Items (Comment or remove any you don't want to see under min value)
 VALUE_D_TIER("Dragon bones")
@@ -312,45 +368,14 @@ VALUE_D_TIER("Ancient essence")
 VALUE_D_TIER("Granite dust")
 VALUE_D_TIER("Crystal shard")
 
-// Tradeable Currencies (Comment or remove any you don't want to see under min value)
-VALUE_E_TIER("Archery ticket")
-VALUE_E_TIER("Mole claw")
-VALUE_E_TIER("Mole skin")
-VALUE_E_TIER("Trading sticks")
-VALUE_E_TIER("Shantay pass")
-VALUE_E_TIER("Ship ticket")
-// VALUE_E_TIER("Numulite")
+// Highlight Rare Bones, and then hide any bones less than 2k
+TEXT_HIGHLIGHT(RARE_BONES, BLUE)
 
-// Untradeable Currencies
-VALUE_E_TIER("Abyssal pearls")
-VALUE_E_TIER("Anima-infused bark")
-VALUE_E_TIER("Agility arena ticket")
-VALUE_E_TIER("Barronite shards")
-VALUE_E_TIER("Blood money")
-VALUE_E_TIER("Brimhaven voucher")
-VALUE_E_TIER("Castle wars ticket")
-VALUE_E_TIER("Ecto-token")
-VALUE_E_TIER("Frog token")
-VALUE_E_TIER("Golden nugget")
-VALUE_E_TIER("Glistening tear")
-VALUE_E_TIER("Hallowed mark")
-VALUE_E_TIER("Intelligence")
-VALUE_E_TIER("Mark of grace")
-VALUE_E_TIER("Mermaid's tear")
-VALUE_E_TIER("Minnow")
-VALUE_E_TIER("Molch pearl")
-VALUE_E_TIER("Nuggets")
-VALUE_E_TIER("Paramaya ticket")
-VALUE_E_TIER("Rare creature parts")
-VALUE_E_TIER("Reward token credits")
-VALUE_E_TIER("Stardust")
-VALUE_E_TIER("Tokkul")
-VALUE_E_TIER("Termites")
-VALUE_E_TIER("Unidentified minerals")
-VALUE_E_TIER("Warrior guild token")
-VALUE_E_TIER("Blessed bone shards")
-VALUE_E_TIER("Sun-kissed bones")
-VALUE_E_TIER("Ecumenical key shard")
+// Tradeable Currencies (Comment or remove any you don't want to see under min value)
+CURRENCY(CURRENCIES)
+
+// Highlight Runes
+if (name:"*rune") { color = LIGHT_PURPLE; }
 
 // Hide specific single/un-noted items
 HIDE_1("Bones")
